@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iTech Team Website Launch</title>
+  <link rel="icon" href="img/submarklogo.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="iTech Team Website Launch">
+  <meta property="og:description" content="Join us in celebrating the launch of our new website!">
+  <meta property="og:image" content="img/itechteam%20logo.png">
+  <meta property="og:url" content="itechteamwebsitelaunch.onrender.com">
+  <meta property="og:type" content="website">
+
+  <style>
+    @keyframes countdown {
+      0% {
+        stroke-dashoffset: 100;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+    .animated-circle {
+      stroke-dasharray: 100;
+      transition: stroke-dashoffset 1s linear;
+    }
+    body {
+      background: linear-gradient(135deg, #0C4A6E, #F74F52);
+      background-size: cover;
+    }
+    .logo {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+    }
+  </style>
+</head>
+<body class="text-white flex flex-col items-center justify-center min-h-screen">
+  <div class="logo">
+    <img src="img/itechteam logo.png" alt="iTech Team Logo" style="width: 30%;">
+  </div>
+  <div class="text-center">
+    <h1 class="text-5xl lg:text-6xl mt-32 lg:mt-12 font-light tracking-widest mb-4">ITECH TEAM <span class="text-6xl">WEBSITE LAUNCH</span></h1>
+    <p class="text-gray-200 mb-8">Our website is ready and launching soon!</p>
+
+    <div class="flex flex-wrap justify-center gap-8 mb-8">
+      <div class="text-center">
+        <div class="relative w-32 h-32">
+          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#2d3748" stroke-width="4" />
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#F74F52" stroke-width="4" class="animated-circle" id="days-circle" />
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span id="days" class="text-3xl">0</span>
+          </div>
+        </div>
+        <p class="mt-2">DAYS</p>
+      </div>
+
+      <div class="text-center">
+        <div class="relative w-32 h-32">
+          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#2d3748" stroke-width="4" />
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#075985" stroke-width="4" class="animated-circle" id="hours-circle" />
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span id="hours" class="text-3xl">0</span>
+          </div>
+        </div>
+        <p class="mt-2">HOURS</p>
+      </div>
+
+      <div class="text-center">
+        <div class="relative w-32 h-32">
+          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#2d3748" stroke-width="4" />
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#F74F52" stroke-width="4" class="animated-circle" id="minutes-circle" />
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span id="minutes" class="text-3xl">0</span>
+          </div>
+        </div>
+        <p class="mt-2">MINS</p>
+      </div>
+
+      <div class="text-center">
+        <div class="relative w-32 h-32">
+          <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#2d3748" stroke-width="4" />
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#075985" stroke-width="4" class="animated-circle" id="seconds-circle" />
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span id="seconds" class="text-3xl">0</span>
+          </div>
+        </div>
+        <p class="mt-2">SECS</p>
+      </div>
+    </div>
+
+    <p class="text-gray-200 mb-4 break-words">Join us on January 10th, 2025, for the official launch.</p>
+    <div class="mt-4">
+        <button id="visit-website" disabled class="bg-gray-600 text-white px-6 py-3 rounded-md cursor-not-allowed mb-4">Visit Website</button>
+    </div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-01-10T08:00:00");
+    const button = document.getElementById("visit-website");
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+    if (difference <= 0) {
+        document.getElementById("days").textContent = 0;
+        document.getElementById("hours").textContent = 0;
+        document.getElementById("minutes").textContent = 0;
+        document.getElementById("seconds").textContent = 0;
+        button.disabled = false;
+        button.classList.remove("bg-gray-600", "cursor-not-allowed");
+        button.classList.add("bg-bg-sky-900", "hover:bg-bg-sky-950", "cursor-pointer");
+
+        // Add website link functionality
+        button.onclick = () => {
+            window.location.href = "https://itechteam.org";
+        };
+
+        return;
+    }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+
+      // Update circle stroke-dashoffset for animation
+      document.getElementById("days-circle").style.strokeDashoffset = 100 - (days / 365) * 100;
+      document.getElementById("hours-circle").style.strokeDashoffset = 100 - (hours / 24) * 100;
+      document.getElementById("minutes-circle").style.strokeDashoffset = 100 - (minutes / 60) * 100;
+      document.getElementById("seconds-circle").style.strokeDashoffset = 100 - (seconds / 60) * 100;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
